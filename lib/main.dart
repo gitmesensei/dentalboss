@@ -8,9 +8,7 @@ import 'package:dentalboss/responsive_widget.dart';
 import 'package:dentalboss/sanitised_treatments.dart';
 import 'package:dentalboss/services.dart';
 import 'package:dentalboss/size_config.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -37,10 +35,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
 
   bool _tapped= false;
-  bool _removeBox =false;
   AnimationController _animationController;
   Animation _animation;
-  Animation _animation2;
   var tween = Tween(begin: Offset(0.0, -1.0), end: Offset.zero)
       .chain(CurveTween(curve: Curves.ease));
 
@@ -272,9 +268,9 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin{
   }
   _launchCall(number) async{
 
-    var whatsappurl="whatsapp://send?phone=$number";
+    var callUrl="tel:$number";
 
-    await canLaunch(whatsappurl)?launch(whatsappurl):throw('could not find whatsapp account for the number');
+    await canLaunch(callUrl)?launch(callUrl):throw('could not find the number');
 
   }
 }
